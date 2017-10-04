@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Customer {
 
-    private Map<Integer, Account> accounts = new HashMap<>();
+/*    private Map<Integer, Account> accounts = new HashMap<>();
 
     public void addAccount(Account account) {
         accounts.put(account.getId(), account);
@@ -24,6 +24,6 @@ public class Customer {
         }
 
         return balance;
-    }
+    }*/
 
 }

@@ -8,9 +8,11 @@ public class AccountsManager {
     public static final int MIN_SAVINGS_BALANCE = 100;
 
     private Map<Integer, Account> accounts = new HashMap<>();
+    private Map<Integer, Customer> customers = new HashMap<>();
 
-    public void addAccount(Account account) {
+    public void addAccount(Account account, Customer customer) {
         accounts.put(account.getId(), account);
+        customers.put(account.getId(), customer);
     }
 
     public void deposit(int id, double amount) {

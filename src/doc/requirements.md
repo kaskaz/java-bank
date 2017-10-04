@@ -27,24 +27,21 @@ The Bank balance equals the sum of the balances of all customers.
 Bank, Customer, Checking, Savings, Account, Money, Accounts Manager
 
 ## Bank
-Represents the Banking service, contains costumers
+Represents the Banking service, contains accounts managers
 
 ### Responsibilities
-* add a new customer
 * get balance
+* transfer between accounts
 
 ### Collaborators
-* Customer
+* Accounts Manager
 
 ## Customer
-Represents bank customers, contains accounts
+Represents bank customers
 
 ### Responsibilities
-* add a new account
-* get balance
 
 ### Collaborators
-* Account
 
 ## Account
 Represents a Bank Account, contains money
@@ -55,16 +52,16 @@ Represents a Bank Account, contains money
 * get balance
 
 ## Accounts Manager
-Represents bank accounts manager, contains all bank accounts
+Represents bank accounts manager, contains bank customers and their accounts
 
 ### Responsibilities
-* add a new account
+* regist a new account
 * deposit money account
 * withdraw money from account
-* transfer between accounts
 
 ### Collaborators
 * Account
+* Customers
 
 ## High Level Design
 
