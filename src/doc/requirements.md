@@ -24,9 +24,9 @@ The Bank balance equals the sum of the balances of all customers.
 1. Bank should be able to check the combined balance of all customers
 
 ## Identifying Objects & Responsibilities
-Bank, Customer, Checking, Savings, Account, Money
+Bank, Customer, Checking, Savings, Account, Money, Accounts Manager
 
-### Bank
+## Bank
 Represents the Banking service, contains costumers
 
 ### Responsibilities
@@ -41,9 +41,6 @@ Represents bank customers, contains accounts
 
 ### Responsibilities
 * add a new account
-* deposit money on account
-* withdraw money from account
-* transfer between accounts
 * get balance
 
 ### Collaborators
@@ -56,6 +53,18 @@ Represents a Bank Account, contains money
 * credit
 * debit
 * get balance
+
+## Accounts Manager
+Represents bank accounts manager, contains all bank accounts
+
+### Responsibilities
+* add a new account
+* deposit money account
+* withdraw money from account
+* transfer between accounts
+
+### Collaborators
+* Account
 
 ## High Level Design
 
