@@ -6,6 +6,10 @@ public class CheckingAccount extends Account {
         super(id);
     }
 
+    public CheckingAccount CheckingAccountFactory(int id){
+        return new CheckingAccount(id);
+    }
+
     @Override
     public AccountType getAccountType() {
         return AccountType.CHECKING;

@@ -14,6 +14,10 @@ public class Bank {
         this.accountManager = accountManager;
     }
 
+    public AccountManager getAccountManager() {
+        return accountManager;
+    }
+
     public void addCustomer(Customer customer) {
         customers.add(customer);
         customer.setAccountManager(accountManager);

@@ -8,6 +8,10 @@ public class SavingsAccount extends Account {
         super(id);
     }
 
+    public SavingsAccount SavingsAccountFactory(int id){
+        return new SavingsAccount(id);
+    }
+
     @Override
     public AccountType getAccountType() {
         return AccountType.SAVINGS;

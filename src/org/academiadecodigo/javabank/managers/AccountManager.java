@@ -17,6 +17,10 @@ public class AccountManager {
         this.accountMap = new HashMap<>();
     }
 
+    public AccountManager AccountManagerFactory(){
+        return new AccountManager();
+    }
+
     public Account openAccount(AccountType accountType) {
 
         Account newAccount;
