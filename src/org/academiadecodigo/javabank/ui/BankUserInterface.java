@@ -29,7 +29,7 @@ public class BankUserInterface {
         operations = new ArrayList<>();
 
         operations.add( new OpenAccount(bank.getAccountManager(), bank.getCustomerManager()) );
-        operations.add( new CustomerBalance() );
+        operations.add( new CustomerBalance(bank.getCustomerManager()) );
         operations.add( new Deposit(bank.getAccountManager()) );
         operations.add( new Withdraw(bank.getAccountManager()) );
         operations.add( new Transfer(bank.getAccountManager()) );
