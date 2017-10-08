@@ -13,7 +13,7 @@ public class Withdraw implements Operation {
 
     @Override
     public void run(int context) {
-
+        System.out.println(description());
     }
 
     @Override

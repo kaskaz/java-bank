@@ -42,12 +42,8 @@ public class CustomerTerminal {
         if (option == operations.size())
             return false;
 
-        
-
-        // if option == quit return false
-
-        // setOperation(option)
-        // doOperation();
+        setOperation( operations.get(option));
+        doOperation(context);
 
         return true;
     }

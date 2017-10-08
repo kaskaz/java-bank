@@ -8,12 +8,12 @@ public class CustomerBalance implements Operation {
 
     @Override
     public void run(int context) {
-
+        System.out.println(description());
     }
 
     @Override
     public String description() {
-        return "Consult balance";
+        return "Balance";
     }
 
 }

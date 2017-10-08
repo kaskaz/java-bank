@@ -28,7 +28,7 @@ public class BankUserInterface {
 
         operations = new ArrayList<>();
 
-        operations.add( new OpenAccount(bank.getAccountManager()) );
+        operations.add( new OpenAccount(bank.getAccountManager(), bank.getCustomerManager()) );
         operations.add( new CustomerBalance() );
         operations.add( new Deposit(bank.getAccountManager()) );
         operations.add( new Withdraw(bank.getAccountManager()) );
@@ -38,7 +38,7 @@ public class BankUserInterface {
 
     public boolean run(){
 
-        while( customerTerminal.run(1) )
+        while( customerTerminal.run(4) )
             ;
 
         return true;
