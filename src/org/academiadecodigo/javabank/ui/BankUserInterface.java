@@ -4,6 +4,8 @@ import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.javabank.domain.Bank;
 import org.academiadecodigo.javabank.ui.operations.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class BankUserInterface {
@@ -11,7 +13,7 @@ public class BankUserInterface {
     private Bank bank;
 
     private CustomerTerminal customerTerminal;
-    private Set<Operation> operations;
+    private List<Operation> operations;
 
     public BankUserInterface(Bank bank){
 
@@ -24,26 +26,19 @@ public class BankUserInterface {
 
     private void createOperations(){
 
-        OpenAccount openAccount = new OpenAccount(bank.getAccountManager());
-        operations.add(openAccount);
+        operations = new ArrayList<>();
 
-        CustomerBalance customerBalance = new CustomerBalance();
-        operations.add(customerBalance);
-
-        Deposit deposit = new Deposit(bank.getAccountManager());
-        operations.add(deposit);
-
-        Withdraw withdraw = new Withdraw(bank.getAccountManager());
-        operations.add(withdraw);
-
-        Transfer transfer = new Transfer(bank.getAccountManager());
-        operations.add(transfer);
+        operations.add( new OpenAccount(bank.getAccountManager()) );
+        operations.add( new CustomerBalance() );
+        operations.add( new Deposit(bank.getAccountManager()) );
+        operations.add( new Withdraw(bank.getAccountManager()) );
+        operations.add( new Transfer(bank.getAccountManager()) );
 
     }
 
     public boolean run(){
 
-        while( customerTerminal.run() )
+        while( customerTerminal.run(1) )
             ;
 
         return true;

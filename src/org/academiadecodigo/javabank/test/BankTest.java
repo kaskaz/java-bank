@@ -4,21 +4,23 @@ import org.academiadecodigo.javabank.domain.Bank;
 import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.domain.account.AccountType;
 import org.academiadecodigo.javabank.managers.AccountManager;
+import org.academiadecodigo.javabank.managers.CustomerManager;
 
 public class BankTest {
 
     public boolean test() {
 
+        CustomerManager customerManager = new CustomerManager();
         AccountManager accountManager = new AccountManager();
-        Bank bank = new Bank(accountManager);
+        Bank bank = new Bank(accountManager, customerManager);
 
         // bank initial balance should be 0
         if (bank.getBalance() != 0) {
             return false;
         }
 
-        Customer c1 = new Customer();
-        Customer c2 = new Customer();
+        Customer c1 = customerManager.CustomerFactory();
+        Customer c2 = customerManager.CustomerFactory();
         bank.addCustomer(c1);
         bank.addCustomer(c2);
 

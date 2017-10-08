@@ -3,13 +3,16 @@ package org.academiadecodigo.javabank.test;
 import org.academiadecodigo.javabank.domain.Customer;
 import org.academiadecodigo.javabank.domain.account.AccountType;
 import org.academiadecodigo.javabank.managers.AccountManager;
+import org.academiadecodigo.javabank.managers.CustomerManager;
 
 public class CustomerTest {
 
     public boolean test() {
 
+        CustomerManager customerManager = new CustomerManager();
         AccountManager accountManager = new AccountManager();
-        Customer customer = new Customer();
+
+        Customer customer = customerManager.CustomerFactory();
         customer.setAccountManager(accountManager);
 
         // customer should start with zero balance

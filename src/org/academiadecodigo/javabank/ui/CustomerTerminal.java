@@ -1,17 +1,20 @@
 package org.academiadecodigo.javabank.ui;
 
 import org.academiadecodigo.bootcamp.Prompt;
+import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.javabank.ui.operations.Operation;
 
+import java.util.List;
 import java.util.Set;
 
 public class CustomerTerminal {
 
-    private Set<Operation> operations;
+    private List<Operation> operations;
     private Operation operation;
     private Prompt prompt;
+    private MenuInputScanner scanner;
 
-    public CustomerTerminal(Set<Operation> operations){
+    public CustomerTerminal(List<Operation> operations){
 
         this.operations = operations;
 
@@ -23,29 +26,44 @@ public class CustomerTerminal {
         this.operation = operation;
     }
 
-    public void doOperation(){
-        operation.run();
+    public void doOperation(int context){
+        operation.run(context);
     }
 
-    public boolean run(){
+    public boolean run(int context){
 
-        int op = 1;
+        int option;
 
-        System.out.println("Choose an option below:");
+        scanner = new MenuInputScanner( getOptions() );
+        scanner.setMessage("Choose an option:");
 
-        // Display Menu and grab user option
-        for (Operation operation1 : operations)
-            System.out.println(op + " - " + operation1.description());
+        option = prompt.getUserInput(scanner)-1;
 
+        if (option == operations.size())
+            return false;
 
-        return false;
+        
 
         // if option == quit return false
 
         // setOperation(option)
         // doOperation();
 
-       // return true;
+        return true;
+    }
+
+    private String[] getOptions(){
+
+        int i=0;
+        String[] options = new String[operations.size()+1];
+
+        for (Operation operation1 : operations) {
+            options[i++] = operation1.description();
+        }
+
+        options[i] = "Exit";
+
+        return options;
     }
 
 }

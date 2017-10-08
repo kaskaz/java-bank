@@ -18,7 +18,7 @@ public class Test {
         System.out.println("Customer: " + (customerTest.test() ? "OK" : "FAIL"));
         System.out.println("Bank: " + (bankTest.test() ? "OK" : "FAIL"));
         System.out.println("AccountFactory: " + (accountFactoryTest.test() ? "OK" : "FAIL"));
-        System.out.println("BankUserInterface: " + (bankTest.test() ? "OK" : "FAIL"));
+        System.out.println("BankUserInterface: " + (bankUserInterfaceTest.test() ? "OK" : "FAIL"));
 
     }
 

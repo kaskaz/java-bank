@@ -11,7 +11,7 @@ public class Deposit implements Operation {
     }
 
     @Override
-    public void run() {
+    public void run(int context) {
 
     }
 
