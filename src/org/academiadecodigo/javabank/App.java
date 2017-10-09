@@ -20,6 +20,9 @@ public class App {
         bank.addCustomer(c2);
         bank.addCustomer(c3);
 
+        Bootstrap bootstrap = new Bootstrap();
+        bootstrap.start(bank);
+
         BankApplication bankApplication = new BankApplication(bank);
         bankApplication.start();
     }
