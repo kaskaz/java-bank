@@ -48,6 +48,10 @@ public class BankApplication {
 
     }
 
+    /**
+     * Tratado no login!!
+     * @return
+     */
     private int scanCustomerId() {
 
         IntegerSetInputScanner scanner = new IntegerSetInputScanner(bank.getCustomerIds());
@@ -57,15 +61,7 @@ public class BankApplication {
 
     }
 
-    private MenuInputScanner buildMainMenu() {
 
-        MenuInputScanner mainMenu = new MenuInputScanner(UserOptions.getMessages());
-        mainMenu.setError(Messages.ERROR_INVALID_OPTION);
-        mainMenu.setMessage(Messages.MENU_WELCOME);
-
-        return mainMenu;
-
-    }
 
     private Map<Integer, Operation> buildOperationsMap() {
 

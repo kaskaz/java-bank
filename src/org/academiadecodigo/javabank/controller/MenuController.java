@@ -1,18 +1,17 @@
 package org.academiadecodigo.javabank.controller;
 
-import org.academiadecodigo.javabank.view.View;
+import java.util.Map;
 
-public class MenuController implements Controller {
+public class MenuController extends AbstractController {
 
-    private View view;
+    private Map<Integer, Controller> controllersMap;
 
-    public void setView(View view) {
-        this.view = view;
+    public MenuController(Map<Integer, Controller> controllersMap){
+        this.controllersMap = controllersMap;
     }
 
-    @Override
-    public void run() {
-        view.show();
+    public void onMenuSelection(int option){
+        controllersMap.get(option).run();
     }
 
 }
