@@ -36,12 +36,13 @@ public class Bootstrap {
         /**
          * Operations
          */
-        Map<Integer, Controller> map = buildOperationsMap();
+        Map<Integer, Controller> mapOperationsControllers = buildOperationsControllers();
+        Map<Integer, View> mapOperationsViewers = buildOperationsViewers(mapOperationsControllers);
 
         /**
          * Menu
          */
-        MenuController menuController = new MenuController(map);
+        MenuController menuController = new MenuController(mapOperationsControllers);
         MenuView menuView = new MenuView(menuController);
         menuController.setView(menuView);
 
@@ -56,16 +57,34 @@ public class Bootstrap {
 
     }
 
-    private Map<Integer, Controller> buildOperationsMap() {
+    private Map<Integer, Controller> buildOperationsControllers() {
 
         Map<Integer, Controller> map = new HashMap<>();
-        map.put(UserOptions.GET_BALANCE.getOption(), new BalanceOperation(this));
-        map.put(UserOptions.DEPOSIT.getOption(), new DepositOperation(this));
-        map.put(UserOptions.WITHDRAW.getOption(), new WithdrawOperation(this));
-        map.put(UserOptions.OPEN_ACCOUNT.getOption(), new NewAccountOperation(this));
+
+        map.put(UserOptions.GET_BALANCE.getOption(), new BalanceController());
+        map.put(UserOptions.DEPOSIT.getOption(), new DepositController());
+        map.put(UserOptions.WITHDRAW.getOption(), new WithdrawController());
+        map.put(UserOptions.OPEN_ACCOUNT.getOption(), new OpenAccountController());
 
         return map;
 
+    }
+
+    private Map<Integer, View> buildOperationsViewers(Map<Integer, Controller> map){
+
+        Map<Integer, View> viewers = new HashMap<>();
+
+        viewers.put( UserOptions.GET_BALANCE.getOption(), new BalanceView( map.get(UserOptions.GET_BALANCE.getOption()) ));
+        viewers.put( UserOptions.DEPOSIT.getOption(), new DepositView( map.get(UserOptions.DEPOSIT.getOption()) ));
+        viewers.put( UserOptions.WITHDRAW.getOption(), new WithdrawView( map.get(UserOptions.WITHDRAW.getOption()) ));
+        viewers.put( UserOptions.OPEN_ACCOUNT.getOption(), new OpenAccountView( map.get(UserOptions.OPEN_ACCOUNT.getOption()) ));
+
+        map.get( UserOptions.GET_BALANCE.getOption() ).setView( viewers.get(UserOptions.GET_BALANCE.getOption()) );
+        map.get( UserOptions.DEPOSIT.getOption() ).setView( viewers.get(UserOptions.DEPOSIT.getOption()) );
+        map.get( UserOptions.WITHDRAW.getOption() ).setView( viewers.get(UserOptions.WITHDRAW.getOption()) );
+        map.get( UserOptions.OPEN_ACCOUNT.getOption() ).setView( viewers.get(UserOptions.OPEN_ACCOUNT.getOption()) );
+
+        return viewers;
     }
 
 }
