@@ -51,4 +51,8 @@ public class Bank {
     public void setAcessingCustomerId(int acessingCustomerId) {
         this.acessingCustomerId = acessingCustomerId;
     }
+
+    public int getAcessingCustomerId() {
+        return acessingCustomerId;
+    }
 }

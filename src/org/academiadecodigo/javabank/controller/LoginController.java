@@ -1,10 +1,10 @@
 package org.academiadecodigo.javabank.controller;
 
-public class LoginController extends AbstractController{
+public class LoginController extends AbstractController {
 
     private Controller nextController;
 
-    public void setNextController(){
+    public void setNextController( MenuController nextController){
         this.nextController = nextController;
     }
 
