@@ -21,4 +21,8 @@ public class BalanceController extends AbstractController {
         return customerService.getCustomer( authService.getLoginCustomer() );
     }
 
+    public double getCustomerBalance(){
+        return customerService.getCustomerBalance( authService.getLoginCustomer() );
+    }
+
 }

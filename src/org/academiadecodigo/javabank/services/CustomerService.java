@@ -1,6 +1,7 @@
 package org.academiadecodigo.javabank.services;
 
 import org.academiadecodigo.javabank.model.Customer;
+import org.academiadecodigo.javabank.model.account.Account;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -27,7 +28,19 @@ public class CustomerService {
         double balance = 0;
 
         for (Customer customer : customers.values()) {
-            balance += customer.getBalance();
+            balance += getCustomerBalance(customer.getId());
+        }
+
+        return balance;
+    }
+
+    public double getCustomerBalance(int id){
+
+        Set<Account> accounts = customers.get(id).getAccounts();
+
+        double balance = 0;
+        for (Account account : accounts) {
+            balance += account.getBalance();
         }
 
         return balance;

@@ -28,6 +28,6 @@ public class BalanceView implements View {
             System.out.println(account.getId() + "\t" + account.getAccountType() + "\t" + df.format(account.getBalance()));
         }
 
-        System.out.println("\n\n" + Messages.VIEW_BALANCE_TOTAL_MESSAGE + df.format(balanceController.getCustomer().getBalance()));
+        System.out.println("\n\n" + Messages.VIEW_BALANCE_TOTAL_MESSAGE + df.format(balanceController.getCustomerBalance()));
     }
 }
