@@ -1,10 +1,7 @@
 package org.academiadecodigo.javabank.controller;
 
 import org.academiadecodigo.javabank.services.AuthService;
-import org.academiadecodigo.javabank.services.CustomerService;
 import org.academiadecodigo.javabank.view.LoginView;
-
-import java.util.Set;
 
 public class LoginController extends AbstractController {
 

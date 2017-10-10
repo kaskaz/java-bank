@@ -99,6 +99,11 @@ public class Bootstrap {
         authService.setCustomerService(customerService);
 
         loginController.setAuthService(authService);
+        balanceController.setAuthService(authService);
+        mainController.setAuthService(authService);
+        newAccountController.setAuthService(authService);
+        depositController.setAuthService(authService);
+        withdrawalController.setAuthService(authService);
 
         return loginController;
     }
