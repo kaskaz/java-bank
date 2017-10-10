@@ -1,23 +1,33 @@
 package org.academiadecodigo.javabank.controller;
 
-import org.academiadecodigo.javabank.model.Bank;
+import org.academiadecodigo.javabank.services.AuthService;
+import org.academiadecodigo.javabank.services.CustomerService;
+import org.academiadecodigo.javabank.view.LoginView;
+
+import java.util.Set;
 
 public class LoginController extends AbstractController {
 
     private Controller nextController;
-
-    private Bank bank;
+    private AuthService authService;
 
     public void onLogin(int id) {
-        bank.setLoginCustomer(id);
-        nextController.init();
+
+        if (authService.auth(id))
+            nextController.init();
+        else{
+            ((LoginView)view).showLoginError();
+            init();
+        }
+
     }
 
     public void setNextController(Controller nextController) {
         this.nextController = nextController;
     }
 
-    public void setBank(Bank bank) {
-        this.bank = bank;
+    public void setAuthService(AuthService authService) {
+        this.authService = authService;
     }
+
 }

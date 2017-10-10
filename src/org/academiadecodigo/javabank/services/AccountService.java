@@ -1,25 +1,19 @@
-package org.academiadecodigo.javabank.managers;
+package org.academiadecodigo.javabank.services;
 
 import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.model.account.AccountType;
 import org.academiadecodigo.javabank.factories.AccountFactory;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class AccountManager {
+public class AccountService {
 
     private AccountFactory accountFactory = new AccountFactory();
     private Map<Integer, Account> accountMap;
 
-    public AccountManager() {
+    public AccountService() {
         accountMap = new HashMap<>();
-    }
-
-    public Account findById(int id) {
-        return accountMap.get(id);
     }
 
     public Account openAccount(AccountType accountType) {
