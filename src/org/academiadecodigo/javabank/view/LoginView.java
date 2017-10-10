@@ -21,7 +21,7 @@ public class LoginView extends AbstractView{
         scanner.setMessage(Messages.CHOOSE_CUSTOMER);
         scanner.setError(Messages.ERROR_INVALID_CUSTOMER);
 
-        loginController.setCustomerId( prompt.getUserInput(scanner) );
+        loginController.onCustomerLogin( prompt.getUserInput(scanner) );
 
     }
 

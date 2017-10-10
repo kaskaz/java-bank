@@ -8,7 +8,7 @@ public class LoginController extends AbstractController {
         this.nextController = nextController;
     }
 
-    public void setCustomerId(int customerId){
+    public void onCustomerLogin(int customerId){
 
         bank.setAcessingCustomerId(customerId);
         nextController.run();
