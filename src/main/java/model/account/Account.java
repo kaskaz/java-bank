@@ -1,19 +1,42 @@
 package model.account;
 
+import model.AbstractModel;
 import model.Model;
 
-public interface Account extends Model {
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-    AccountType getAccountType();
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Account extends AbstractModel implements Model {
 
-    double getBalance();
+    private double balance = 0;
 
-    void credit(double amount);
+    public void credit(double amount) {
+        if (canCredit(amount)) {
+            balance += amount;
+        }
+    }
 
-    void debit(double amount);
+    public void debit(double amount) {
+        if (canDebit(amount)) {
+            balance -= amount;
+        }
+    }
 
-    boolean canDebit(double amount);
+    public double getBalance() {
+        return balance;
+    }
 
-    boolean canCredit(double amount);
+    public abstract AccountType getAccountType();
+
+    public boolean canDebit(double amount) {
+        return amount > 0 && amount <= balance;
+    }
+
+    public boolean canCredit(double amount) {
+        return amount > 0;
+    }
 
 }

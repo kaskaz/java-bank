@@ -2,12 +2,20 @@ package model;
 
 import model.account.Account;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Customer extends AbstractModel {
 
     private String name;
+
+    @OneToMany(
+            cascade = {CascadeType.ALL},
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
+    )
     private List<Account> accounts = new ArrayList<>();
 
     public String getName() {
@@ -20,6 +28,10 @@ public class Customer extends AbstractModel {
 
     public List<Account> getAccounts() {
         return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
 
     public void addAccount(Account account) {
