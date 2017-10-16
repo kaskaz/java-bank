@@ -14,6 +14,7 @@ public class Customer extends AbstractModel {
     @OneToMany(
             cascade = {CascadeType.ALL},
             orphanRemoval = true,
+            mappedBy = "customer",
             fetch = FetchType.EAGER
     )
     private List<Account> accounts = new ArrayList<>();
@@ -36,6 +37,7 @@ public class Customer extends AbstractModel {
 
     public void addAccount(Account account) {
         accounts.add(account);
+        account.setCustomer(this);
     }
 
     public void removeAccount(Account account) {

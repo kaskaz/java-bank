@@ -1,16 +1,17 @@
 package model.account;
 
 import model.AbstractModel;
+import model.Customer;
 import model.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Account extends AbstractModel implements Model {
 
+    @ManyToOne
+    private Customer customer;
     private double balance = 0;
 
     public void credit(double amount) {
@@ -29,6 +30,10 @@ public abstract class Account extends AbstractModel implements Model {
         return balance;
     }
 
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     public abstract AccountType getAccountType();
 
     public boolean canDebit(double amount) {
@@ -39,4 +44,11 @@ public abstract class Account extends AbstractModel implements Model {
         return amount > 0;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

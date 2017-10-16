@@ -4,6 +4,8 @@ import controller.transaction.DepositController;
 import controller.transaction.WithdrawalController;
 import factories.AccountFactory;
 import model.Customer;
+import persistance.AccountServicePersistance;
+import persistance.CustomerServicePersistance;
 import services.AccountServiceImpl;
 import services.AuthServiceImpl;
 import services.CustomerServiceImpl;
@@ -15,8 +17,8 @@ import java.util.Map;
 public class Bootstrap {
 
     private AuthServiceImpl authService;
-    private CustomerServiceImpl customerService;
-    private AccountServiceImpl accountService;
+    private CustomerServicePersistance customerService;
+    private AccountServicePersistance accountService;
 
     public void loadCustomers() {
 
@@ -108,11 +110,11 @@ public class Bootstrap {
         this.authService = authService;
     }
 
-    public void setCustomerService(CustomerServiceImpl customerService) {
+    public void setCustomerService(CustomerServicePersistance customerService) {
         this.customerService = customerService;
     }
 
-    public void setAccountService(AccountServiceImpl accountService) {
+    public void setAccountService(AccountServicePersistance accountService) {
         this.accountService = accountService;
     }
 }

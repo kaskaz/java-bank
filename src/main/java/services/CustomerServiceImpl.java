@@ -10,13 +10,15 @@ public class CustomerServiceImpl implements CustomerService {
     private Map<Integer, Customer> customerMap = new HashMap<>();
 
     @Override
-    public void add(Customer customer) {
+    public Customer add(Customer customer) {
 
         if (customer.getId() == null) {
             customer.setId(getNextId());
         }
 
         customerMap.put(customer.getId(), customer);
+
+        return customer;
     }
 
     @Override

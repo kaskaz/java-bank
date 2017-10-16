@@ -1,6 +1,8 @@
 //package org.academiadecodigo.javabank;
 
 import controller.LoginController;
+import persistance.AccountServicePersistance;
+import persistance.CustomerServicePersistance;
 import persistance.H2WebServer;
 import services.AccountServiceImpl;
 import services.AuthServiceImpl;
@@ -21,7 +23,7 @@ public class App {
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("dev");
 
             App app = new App();
-            app.bootStrap();
+            app.bootStrap(emf);
 
             emf.close();
             h2WebServer.stop();
@@ -33,12 +35,12 @@ public class App {
 
     }
 
-    private void bootStrap() {
+    private void bootStrap(EntityManagerFactory emf) {
 
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.setAuthService(new AuthServiceImpl());
-        bootstrap.setAccountService(new AccountServiceImpl());
-        bootstrap.setCustomerService(new CustomerServiceImpl());
+        bootstrap.setAccountService(new AccountServicePersistance(emf));
+        bootstrap.setCustomerService(new CustomerServicePersistance(emf));
         bootstrap.loadCustomers();
 
         LoginController loginController = bootstrap.wireObjects();

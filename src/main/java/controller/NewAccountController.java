@@ -11,6 +11,7 @@ public class NewAccountController extends AbstractController {
     private AccountFactory accountFactory;
     private AccountService accountService;
 
+
     @Override
     public void init() {
 
@@ -22,8 +23,9 @@ public class NewAccountController extends AbstractController {
 
         Account newAccount = accountFactory.createAccount(AccountType.CHECKING);
 
-        accountService.add(newAccount);
+        newAccount = accountService.add(newAccount);
         authService.getAccessingCustomer().addAccount(newAccount);
+        accountService.add(newAccount);
 
         return newAccount.getId();
     }

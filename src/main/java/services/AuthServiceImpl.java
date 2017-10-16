@@ -16,7 +16,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public Customer getAccessingCustomer() {
-        return accesingCustomer;
+        return customerService.findById(accesingCustomer.getId());
     }
 
     public void setCustomerService(CustomerService customerService) {
