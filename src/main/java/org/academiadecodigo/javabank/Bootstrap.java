@@ -5,11 +5,16 @@ import org.academiadecodigo.javabank.controller.*;
 import org.academiadecodigo.javabank.controller.transaction.DepositController;
 import org.academiadecodigo.javabank.controller.transaction.WithdrawalController;
 import org.academiadecodigo.javabank.factories.AccountFactory;
+import org.academiadecodigo.javabank.persistence.managers.SessionManager;
+import org.academiadecodigo.javabank.persistence.managers.TransactionManager;
+import org.academiadecodigo.javabank.persistence.managers.jpa.JpaSessionManager;
+import org.academiadecodigo.javabank.persistence.managers.jpa.JpaTransactionManager;
 import org.academiadecodigo.javabank.services.AccountImpl;
 import org.academiadecodigo.javabank.services.CustomerImpl;
 import org.academiadecodigo.javabank.services.AuthService;
 import org.academiadecodigo.javabank.view.*;
 
+import javax.persistence.EntityManagerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +23,7 @@ public class Bootstrap {
     private AuthService authService;
     private CustomerImpl customerService;
     private AccountImpl accountService;
+    private EntityManagerFactory entityManagerFactory;
 
     public Controller wireObjects() {
 
@@ -88,10 +94,6 @@ public class Bootstrap {
 
         mainController.setControllerMap(controllerMap);
 
-        // setup session manager
-
-        // setu
-
         return loginController;
     }
 
@@ -106,4 +108,6 @@ public class Bootstrap {
     public void setAccountService(AccountImpl accountService) {
         this.accountService = accountService;
     }
+
+
 }

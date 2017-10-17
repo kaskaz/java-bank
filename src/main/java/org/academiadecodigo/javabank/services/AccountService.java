@@ -3,6 +3,8 @@ package org.academiadecodigo.javabank.services;
 import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.persistence.dao.AccountDAO;
 import org.academiadecodigo.javabank.persistence.managers.TransactionManager;
+import org.hibernate.TransactionException;
+
 import javax.persistence.RollbackException;
 
 public class AccountService implements AccountImpl {
@@ -95,11 +97,22 @@ public class AccountService implements AccountImpl {
     @Override
     public Account createAccount(Account account) {
 
-        transactionManager.beginWrite();
+        Account mergedAccount = null;
 
-        account = accountDAO.saveOrUpdate(account);
+        try {
 
-        return account;
+            transactionManager.beginWrite();
+
+            mergedAccount = accountDAO.saveOrUpdate(account);
+
+            transactionManager.commit();
+
+
+        } catch (TransactionException ex) {
+            transactionManager.rollback();
+        }
+
+        return mergedAccount;
 
     }
 }

@@ -39,7 +39,6 @@ public abstract class JpaGenericDao<T extends AbstractModel> implements DAO<T> {
         EntityManager em = sessionManager.getCurrentSession();
 
         return em.find(modelType, id);
-
     }
 
     @Override

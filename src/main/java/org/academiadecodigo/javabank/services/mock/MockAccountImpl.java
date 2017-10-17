@@ -31,4 +31,9 @@ public class MockAccountImpl extends AbstractMockImpl<Account> implements Accoun
             dstAccount.credit(amount);
         }
     }
+
+    @Override
+    public Account createAccount(Account account) {
+        return null;
+    }
 }

@@ -1,12 +1,15 @@
 package org.academiadecodigo.javabank.persistence.managers.jpa;
 
+import org.academiadecodigo.javabank.persistence.managers.SessionManager;
 import org.academiadecodigo.javabank.persistence.managers.TransactionManager;
+
+import javax.persistence.EntityManager;
 
 public class JpaTransactionManager implements TransactionManager {
 
-    private JpaSessionManager sm;
+    private SessionManager<EntityManager> sm;
 
-    public JpaTransactionManager(JpaSessionManager sm){
+    public JpaTransactionManager(SessionManager sm){
         this.sm = sm;
     }
 

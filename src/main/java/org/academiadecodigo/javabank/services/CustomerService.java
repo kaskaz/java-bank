@@ -70,15 +70,19 @@ public class CustomerService implements CustomerImpl {
     @Override
     public Customer findById(Integer id) {
 
-        transactionManager.beginRead();
+        try {
+            transactionManager.beginRead();
 
-        Customer customer = customerDAO.findById(id);
+            Customer customer = customerDAO.findById(id);
 
-        if (customer == null) {
-            throw new IllegalArgumentException("Customer does not exists");
+            if (customer == null) {
+                throw new IllegalArgumentException("Customer does not exists");
+            }
+
+            return customer;
+
+        } finally {
+            transactionManager.commit();
         }
-
-        return customer;
-
     }
 }
