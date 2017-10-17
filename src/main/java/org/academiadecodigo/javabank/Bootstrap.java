@@ -5,10 +5,9 @@ import org.academiadecodigo.javabank.controller.*;
 import org.academiadecodigo.javabank.controller.transaction.DepositController;
 import org.academiadecodigo.javabank.controller.transaction.WithdrawalController;
 import org.academiadecodigo.javabank.factories.AccountFactory;
-import org.academiadecodigo.javabank.model.Customer;
-import org.academiadecodigo.javabank.services.AccountService;
-import org.academiadecodigo.javabank.services.CustomerService;
-import org.academiadecodigo.javabank.services.AuthServiceImpl;
+import org.academiadecodigo.javabank.services.AccountImpl;
+import org.academiadecodigo.javabank.services.CustomerImpl;
+import org.academiadecodigo.javabank.services.AuthService;
 import org.academiadecodigo.javabank.view.*;
 
 import java.util.HashMap;
@@ -16,9 +15,9 @@ import java.util.Map;
 
 public class Bootstrap {
 
-    private AuthServiceImpl authService;
-    private CustomerService customerService;
-    private AccountService accountService;
+    private AuthService authService;
+    private CustomerImpl customerService;
+    private AccountImpl accountService;
 
     public Controller wireObjects() {
 
@@ -32,7 +31,7 @@ public class Bootstrap {
         LoginController loginController = new LoginController();
         LoginView loginView = new LoginView();
         loginController.setView(loginView);
-        loginController.setAuthService(authService);
+        loginController.setAuthServiceImpl(authService);
         loginView.setLoginController(loginController);
         loginView.setPrompt(prompt);
 
@@ -42,7 +41,7 @@ public class Bootstrap {
         mainView.setPrompt(prompt);
         mainView.setMainController(mainController);
         mainController.setView(mainView);
-        mainController.setAuthService(authService);
+        mainController.setAuthServiceImpl(authService);
         loginController.setNextController(mainController);
 
         // wire balance controller and view
@@ -51,13 +50,13 @@ public class Bootstrap {
         balanceView.setBalanceController(balanceController);
         balanceController.setView(balanceView);
         balanceController.setCustomerService(customerService);
-        balanceController.setAuthService(authService);
+        balanceController.setAuthServiceImpl(authService);
 
         // wire new account controller and view
         NewAccountView newAccountView = new NewAccountView();
         NewAccountController newAccountController = new NewAccountController();
         newAccountController.setAccountService(accountService);
-        newAccountController.setAuthService(authService);
+        newAccountController.setAuthServiceImpl(authService);
         newAccountController.setAccountFactory(new AccountFactory());
         newAccountController.setView(newAccountView);
         newAccountView.setNewAccountController(newAccountController);
@@ -67,11 +66,11 @@ public class Bootstrap {
         WithdrawalController withdrawalController = new WithdrawalController();
         AccountTransactionView depositView = new AccountTransactionView();
         AccountTransactionView withdrawView = new AccountTransactionView();
-        depositController.setAuthService(authService);
+        depositController.setAuthServiceImpl(authService);
         depositController.setAccountService(accountService);
         depositController.setCustomerService(customerService);
         depositController.setView(depositView);
-        withdrawalController.setAuthService(authService);
+        withdrawalController.setAuthServiceImpl(authService);
         withdrawalController.setCustomerService(customerService);
         withdrawalController.setAccountService(accountService);
         withdrawalController.setView(withdrawView);
@@ -89,18 +88,22 @@ public class Bootstrap {
 
         mainController.setControllerMap(controllerMap);
 
+        // setup session manager
+
+        // setu
+
         return loginController;
     }
 
-    public void setAuthService(AuthServiceImpl authService) {
+    public void setAuthService(AuthService authService) {
         this.authService = authService;
     }
 
-    public void setCustomerService(CustomerService customerService) {
+    public void setCustomerService(CustomerImpl customerService) {
         this.customerService = customerService;
     }
 
-    public void setAccountService(AccountService accountService) {
+    public void setAccountService(AccountImpl accountService) {
         this.accountService = accountService;
     }
 }

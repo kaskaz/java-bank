@@ -1,10 +1,11 @@
-package org.academiadecodigo.javabank.services.jpa;
+package org.academiadecodigo.javabank.persistence.dao.jpa;
 
 import org.academiadecodigo.javabank.model.Customer;
 import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.model.account.CheckingAccount;
 import org.academiadecodigo.javabank.model.account.SavingsAccount;
 import org.academiadecodigo.javabank.persistence.JpaIntegrationTestHelper;
+import org.academiadecodigo.javabank.services.CustomerService;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,13 +20,13 @@ public class JpaCustomerServiceIntegrationTest extends JpaIntegrationTestHelper 
     private final static Integer INVALID_ID = 9999;
     private final static double DOUBLE_DELTA = 0.1;
 
-    private JpaCustomerService cs;
+    private CustomerService cs;
     private EntityManager em;
 
     @Before
     public void setUp() {
 
-        cs = new JpaCustomerService(emf);
+        cs = new CustomerService(emf);
         em = emf.createEntityManager();
     }
 

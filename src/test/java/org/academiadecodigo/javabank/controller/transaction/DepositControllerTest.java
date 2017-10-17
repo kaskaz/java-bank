@@ -1,9 +1,9 @@
 package org.academiadecodigo.javabank.controller.transaction;
 
 import org.academiadecodigo.javabank.model.Customer;
-import org.academiadecodigo.javabank.services.AccountService;
-import org.academiadecodigo.javabank.services.AuthService;
-import org.academiadecodigo.javabank.services.CustomerService;
+import org.academiadecodigo.javabank.services.AccountImpl;
+import org.academiadecodigo.javabank.services.AuthServiceImpl;
+import org.academiadecodigo.javabank.services.CustomerImpl;
 import org.academiadecodigo.javabank.view.View;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,23 +17,23 @@ import static org.mockito.Mockito.*;
 public class DepositControllerTest {
 
     private DepositController depositController;
-    private AuthService authService;
-    private AccountService accountService;
-    private CustomerService customerService;
+    private AuthServiceImpl authServiceImpl;
+    private AccountImpl accountService;
+    private CustomerImpl customerService;
     private View view;
 
     @Before
     public void setup() {
 
         view = mock(View.class);
-        authService = mock(AuthService.class);
-        accountService = mock(AccountService.class);
-        customerService = mock(CustomerService.class);
+        authServiceImpl = mock(AuthServiceImpl.class);
+        accountService = mock(AccountImpl.class);
+        customerService = mock(CustomerImpl.class);
 
         depositController = new DepositController();
         depositController.setCustomerService(customerService);
         depositController.setAccountService(accountService);
-        depositController.setAuthService(authService);
+        depositController.setAuthServiceImpl(authServiceImpl);
         depositController.setView(view);
 
     }
@@ -53,7 +53,7 @@ public class DepositControllerTest {
         int fakeId = 998;
         Set<Integer> fakeAccountIds = new HashSet<>();
         Customer customer = mock(Customer.class);
-        when(authService.getAccessingCustomer()).thenReturn(customer);
+        when(authServiceImpl.getAccessingCustomer()).thenReturn(customer);
         when(customer.getId()).thenReturn(fakeId);
         when(customerService.getCustomerAccountIds(fakeId)).thenReturn(fakeAccountIds);
 

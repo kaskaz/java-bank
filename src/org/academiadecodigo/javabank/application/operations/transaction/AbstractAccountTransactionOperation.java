@@ -6,7 +6,7 @@ import org.academiadecodigo.bootcamp.scanners.integer.IntegerSetInputScanner;
 import org.academiadecodigo.javabank.application.BankApplication;
 import org.academiadecodigo.javabank.application.Messages;
 import org.academiadecodigo.javabank.application.operations.AbstractBankOperation;
-import org.academiadecodigo.javabank.managers.AccountManager;
+import org.academiadecodigo.javabank.persistence.managers.AccountManager;
 
 import java.util.HashSet;
 

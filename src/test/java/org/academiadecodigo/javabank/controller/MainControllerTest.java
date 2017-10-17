@@ -1,7 +1,7 @@
 package org.academiadecodigo.javabank.controller;
 
 import org.academiadecodigo.javabank.model.Customer;
-import org.academiadecodigo.javabank.services.AuthService;
+import org.academiadecodigo.javabank.services.AuthServiceImpl;
 import org.academiadecodigo.javabank.view.UserOptions;
 import org.academiadecodigo.javabank.view.View;
 import org.junit.Before;
@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 public class MainControllerTest {
 
     private MainController mainController;
-    private AuthService authService;
+    private AuthServiceImpl authServiceImpl;
     private Controller ctrl1;
     private Controller ctrl2;
     private Customer customer;
@@ -28,7 +28,7 @@ public class MainControllerTest {
         mainController = new MainController();
 
         // create mocks
-        authService = mock(AuthService.class);
+        authServiceImpl = mock(AuthServiceImpl.class);
         ctrl1 = mock(Controller.class);
         ctrl2 = mock(Controller.class);
         customer = mock(Customer.class);
@@ -41,7 +41,7 @@ public class MainControllerTest {
 
         // wire them to mainController
         mainController.setControllerMap(controllerMap);
-        mainController.setAuthService(authService);
+        mainController.setAuthServiceImpl(authServiceImpl);
         mainController.setView(view);
 
     }
@@ -100,7 +100,7 @@ public class MainControllerTest {
         // setup a fake accessing customer
         String name = "Rui";
         when(customer.getName()).thenReturn(name);
-        when(authService.getAccessingCustomer()).thenReturn(customer);
+        when(authServiceImpl.getAccessingCustomer()).thenReturn(customer);
 
         assertEquals(mainController.getCustomerName(), name);
 

@@ -29,7 +29,7 @@ public class MainController extends AbstractController {
     }
 
     public String getCustomerName() {
-        return authService.getAccessingCustomer().getName();
+        return authServiceImpl.getAccessingCustomer().getName();
     }
 
 }

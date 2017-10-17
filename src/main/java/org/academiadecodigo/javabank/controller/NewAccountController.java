@@ -3,13 +3,13 @@ package org.academiadecodigo.javabank.controller;
 import org.academiadecodigo.javabank.factories.AccountFactory;
 import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.model.account.AccountType;
-import org.academiadecodigo.javabank.services.AccountService;
+import org.academiadecodigo.javabank.services.AccountImpl;
 
 public class NewAccountController extends AbstractController {
 
     private Integer newAccountId;
     private AccountFactory accountFactory;
-    private AccountService accountService;
+    private AccountImpl accountService;
 
     @Override
     public void init() {
@@ -20,8 +20,8 @@ public class NewAccountController extends AbstractController {
     private int createAccount() {
 
         Account newAccount = accountFactory.createAccount(AccountType.CHECKING);
-        authService.getAccessingCustomer().addAccount(newAccount);
-        Account account = accountService.saveOrUpdate(newAccount);
+        authServiceImpl.getAccessingCustomer().addAccount(newAccount);
+        Account account = accountService.createAccount(newAccount);
         return account.getId();
     }
 
@@ -29,7 +29,7 @@ public class NewAccountController extends AbstractController {
         return newAccountId;
     }
 
-    public void setAccountService(AccountService accountService) {
+    public void setAccountService(AccountImpl accountService) {
         this.accountService = accountService;
     }
 

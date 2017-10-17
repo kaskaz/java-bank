@@ -1,9 +1,10 @@
-package org.academiadecodigo.javabank.services.jpa;
+package org.academiadecodigo.javabank.persistence.dao.jpa;
 
 import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.model.account.AccountType;
 import org.academiadecodigo.javabank.model.account.CheckingAccount;
 import org.academiadecodigo.javabank.persistence.JpaIntegrationTestHelper;
+import org.academiadecodigo.javabank.services.AccountService;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,11 +17,11 @@ public class JpaAccountServiceIntegrationTest extends JpaIntegrationTestHelper {
 
     private final static Integer INVALID_ID = 9999;
     private final static double DOUBLE_DELTA = 0.1;
-    private JpaAccountService as;
+    private AccountService as;
 
     @Before
     public void setup() {
-        as = new JpaAccountService(emf);
+        as = new AccountService(emf);
     }
 
 

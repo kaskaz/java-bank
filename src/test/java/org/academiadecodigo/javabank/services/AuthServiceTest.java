@@ -1,27 +1,22 @@
 package org.academiadecodigo.javabank.services;
 
 import org.academiadecodigo.javabank.model.Customer;
-import org.academiadecodigo.javabank.services.AuthService;
-import org.academiadecodigo.javabank.services.AuthServiceImpl;
-import org.academiadecodigo.javabank.services.CustomerService;
 import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.TestCase.*;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.booleanThat;
 import static org.mockito.Mockito.*;
 
-public class AuthServiceImplTest {
+public class AuthServiceTest {
 
-    AuthServiceImpl authService;
-    CustomerService customerService;
+    AuthService authService;
+    CustomerImpl customerService;
 
     @Before
     public void setup() {
 
-        authService = new AuthServiceImpl();
-        customerService = mock(CustomerService.class);
+        authService = new AuthService();
+        customerService = mock(CustomerImpl.class);
 
         authService.setCustomerService(customerService);
     }

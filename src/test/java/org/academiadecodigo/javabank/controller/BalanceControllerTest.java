@@ -1,8 +1,8 @@
 package org.academiadecodigo.javabank.controller;
 
 import org.academiadecodigo.javabank.model.Customer;
-import org.academiadecodigo.javabank.services.AuthService;
-import org.academiadecodigo.javabank.services.CustomerService;
+import org.academiadecodigo.javabank.services.AuthServiceImpl;
+import org.academiadecodigo.javabank.services.CustomerImpl;
 import org.academiadecodigo.javabank.view.View;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +15,8 @@ public class BalanceControllerTest {
     private final static double DOUBLE_DELTA = 0.1;
 
     private BalanceController balanceController;
-    private CustomerService customerService;
-    private AuthService authService;
+    private CustomerImpl customerService;
+    private AuthServiceImpl authServiceImpl;
     private Customer customer;
     private View view;
 
@@ -25,13 +25,13 @@ public class BalanceControllerTest {
 
         balanceController = new BalanceController();
         view = mock(View.class);
-        customerService = mock(CustomerService.class);
-        authService = mock(AuthService.class);
+        customerService = mock(CustomerImpl.class);
+        authServiceImpl = mock(AuthServiceImpl.class);
         customer = mock(Customer.class);
 
         balanceController.setView(view);
         balanceController.setCustomerService(customerService);
-        balanceController.setAuthService(authService);
+        balanceController.setAuthServiceImpl(authServiceImpl);
 
     }
 
@@ -50,7 +50,7 @@ public class BalanceControllerTest {
         Integer fakeId = 999;
         double fakeBalance = 20.5;
 
-        when(authService.getAccessingCustomer()).thenReturn(customer);
+        when(authServiceImpl.getAccessingCustomer()).thenReturn(customer);
         when(customer.getId()).thenReturn(fakeId);
         when(customerService.getBalance(fakeId)).thenReturn(fakeBalance);
 
@@ -62,7 +62,7 @@ public class BalanceControllerTest {
     public void getCustomerTest() {
 
         // fake accessing customer
-        when(authService.getAccessingCustomer()).thenReturn(customer);
+        when(authServiceImpl.getAccessingCustomer()).thenReturn(customer);
 
         Customer bCustomer = balanceController.getCustomer();
         assertEquals(bCustomer, customer);

@@ -1,11 +1,11 @@
 package org.academiadecodigo.javabank.controller;
 
-import org.academiadecodigo.javabank.services.AuthService;
+import org.academiadecodigo.javabank.services.AuthServiceImpl;
 import org.academiadecodigo.javabank.view.View;
 
 public abstract class AbstractController implements Controller {
 
-    protected AuthService authService;
+    protected AuthServiceImpl authServiceImpl;
     protected View view;
 
     public void setView(View view) {
@@ -17,7 +17,7 @@ public abstract class AbstractController implements Controller {
         view.show();
     }
 
-    public void setAuthService(AuthService authService) {
-        this.authService = authService;
+    public void setAuthServiceImpl(AuthServiceImpl authServiceImpl) {
+        this.authServiceImpl = authServiceImpl;
     }
 }

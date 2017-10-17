@@ -6,7 +6,7 @@ public class LoginController extends AbstractController {
 
     public void onLogin(int id) {
 
-        if (authService.authenticate(id)) {
+        if (authServiceImpl.authenticate(id)) {
             nextController.init();
             return;
         }

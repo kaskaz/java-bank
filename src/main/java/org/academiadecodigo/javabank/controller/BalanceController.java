@@ -1,21 +1,21 @@
 package org.academiadecodigo.javabank.controller;
 
 import org.academiadecodigo.javabank.model.Customer;
-import org.academiadecodigo.javabank.services.CustomerService;
+import org.academiadecodigo.javabank.services.CustomerImpl;
 
 public class BalanceController extends AbstractController {
 
-    CustomerService customerService;
+    CustomerImpl customerService;
 
     public Customer getCustomer() {
-        return authService.getAccessingCustomer();
+        return authServiceImpl.getAccessingCustomer();
     }
 
     public double getCustomerBalance() {
-        return customerService.getBalance(authService.getAccessingCustomer().getId());
+        return customerService.getBalance(authServiceImpl.getAccessingCustomer().getId());
     }
 
-    public void setCustomerService(CustomerService customerService) {
+    public void setCustomerService(CustomerImpl customerService) {
         this.customerService = customerService;
     }
 }

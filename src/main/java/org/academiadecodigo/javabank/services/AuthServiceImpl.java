@@ -2,30 +2,10 @@ package org.academiadecodigo.javabank.services;
 
 import org.academiadecodigo.javabank.model.Customer;
 
-public class AuthServiceImpl implements AuthService {
+public interface AuthServiceImpl {
 
-    private Integer accessingCustomerId;
-    private CustomerService customerService;
+    boolean authenticate(Integer id);
 
-    @Override
-    public boolean authenticate(Integer id) {
+    Customer getAccessingCustomer();
 
-        Customer customer = customerService.findById(id);
-
-        if (customer == null) {
-            return false;
-        }
-
-        accessingCustomerId = customer.getId();
-        return true;
-    }
-
-    @Override
-    public Customer getAccessingCustomer() {
-        return customerService.findById(accessingCustomerId);
-    }
-
-    public void setCustomerService(CustomerService customerService) {
-        this.customerService = customerService;
-    }
 }
