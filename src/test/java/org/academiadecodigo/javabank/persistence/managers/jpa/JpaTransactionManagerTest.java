@@ -1,4 +1,4 @@
-package org.academiadecodigo.javabank.persistence.jpa;
+package org.academiadecodigo.javabank.persistence.managers.jpa;
 
 import org.junit.Before;
 import org.junit.Test;

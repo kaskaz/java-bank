@@ -4,7 +4,7 @@ import org.academiadecodigo.javabank.model.Customer;
 import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.model.account.CheckingAccount;
 import org.academiadecodigo.javabank.persistence.TransactionException;
-import org.academiadecodigo.javabank.persistence.TransactionManager;
+import org.academiadecodigo.javabank.persistence.managers.TransactionManager;
 import org.academiadecodigo.javabank.persistence.dao.CustomerDao;
 import org.junit.Before;
 import org.junit.Test;

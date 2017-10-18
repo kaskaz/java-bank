@@ -1,4 +1,4 @@
-package org.academiadecodigo.javabank.persistence;
+package org.academiadecodigo.javabank.persistence.managers;
 
 public interface TransactionManager {
 

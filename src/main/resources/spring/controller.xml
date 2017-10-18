@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Controllers -->
+    <bean class="org.academiadecodigo.javabank.controller.MainController" id="mainController">
+        <property name="view" ref="mainView"/>
+        <property name="authService" ref="authService"/>
+        <property name="controllerMap">
+            <map>
+                <entry key="1" value-ref="balanceController"/>
+                <entry key="4" value-ref="newAccountController"/>
+                <entry key="2" value-ref="depositController"/>
+                <entry key="3" value-ref="withdrawalController"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean class="org.academiadecodigo.javabank.controller.LoginController" id="loginController">
+        <property name="view" ref="loginView"/>
+        <property name="authService" ref="authService"/>
+        <property name="nextController" ref="mainController"/>
+    </bean>
+
+    <bean class="org.academiadecodigo.javabank.controller.NewAccountController" id="newAccountController">
+        <property name="view" ref="newAccountView"/>
+        <property name="authService" ref="authService"/>
+        <property name="accountService" ref="accountService"/>
+        <property name="accountFactory">
+            <bean class="org.academiadecodigo.javabank.factories.AccountFactory"/>
+        </property>
+        <!--<property name="accountFactory" ref="accountFactory"/>-->
+    </bean>
+
+    <bean class="org.academiadecodigo.javabank.controller.BalanceController" id="balanceController">
+        <property name="view" ref="balanceView"/>
+        <property name="authService" ref="authService"/>
+        <property name="customerService" ref="customerService"/>
+    </bean>
+
+    <bean class="org.academiadecodigo.javabank.controller.transaction.DepositController" id="depositController">
+        <property name="view" ref="depositView"/>
+        <property name="customerService" ref="customerService"/>
+        <property name="accountService" ref="accountService"/>
+        <property name="authService" ref="authService"/>
+    </bean>
+
+    <bean class="org.academiadecodigo.javabank.controller.transaction.WithdrawalController" id="withdrawalController">
+        <property name="view" ref="withdrawalView"/>
+        <property name="authService" ref="authService"/>
+        <property name="accountService" ref="accountService"/>
+        <property name="customerService" ref="customerService"/>
+    </bean>
+
+</beans>

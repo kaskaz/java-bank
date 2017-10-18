@@ -1,4 +1,4 @@
-package org.academiadecodigo.javabank.persistence.jpa;
+package org.academiadecodigo.javabank.persistence.managers.jpa;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +20,8 @@ public class JpaSessionManagerTest {
 
         emf = mock(EntityManagerFactory.class);
         em = mock(EntityManager.class);
-        sm = new JpaSessionManager(emf);
+        sm = new JpaSessionManager();
+        sm.setEmf(emf);
 
 
         when(emf.createEntityManager()).thenReturn(em);

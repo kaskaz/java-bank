@@ -1,11 +1,11 @@
-package org.academiadecodigo.javabank.persistence.jpa.dao;
+package org.academiadecodigo.javabank.persistence.managers.jpa.dao;
 
 import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.model.account.CheckingAccount;
 import org.academiadecodigo.javabank.model.account.SavingsAccount;
 import org.academiadecodigo.javabank.persistence.TransactionException;
 import org.academiadecodigo.javabank.persistence.dao.jpa.JpaAccountDao;
-import org.academiadecodigo.javabank.persistence.jpa.JpaSessionManager;
+import org.academiadecodigo.javabank.persistence.managers.jpa.JpaSessionManager;
 import org.hibernate.HibernateException;
 import org.junit.Before;
 import org.junit.Test;

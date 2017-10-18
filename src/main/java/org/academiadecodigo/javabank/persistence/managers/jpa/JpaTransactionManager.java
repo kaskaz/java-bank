@@ -1,6 +1,6 @@
-package org.academiadecodigo.javabank.persistence.jpa;
+package org.academiadecodigo.javabank.persistence.managers.jpa;
 
-import org.academiadecodigo.javabank.persistence.TransactionManager;
+import org.academiadecodigo.javabank.persistence.managers.TransactionManager;
 
 public class JpaTransactionManager implements TransactionManager {
 

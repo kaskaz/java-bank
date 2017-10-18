@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <!-- Prompt utility -->
+<!--
+    <bean id="promptIn" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+        <property name="staticField" value="java.lang.System.in"/>
+    </bean>
+    <bean class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean" id="promptOut">
+        <property name="staticField" value="java.lang.System.out"/>
+    </bean>
+    <bean id="prompt" class="org.academiadecodigo.bootcamp.Prompt">
+        <constructor-arg name="input" ref="promptIn"/>
+        <constructor-arg name="output" value="promptOut"/>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean" id="opBalance">
+        <property name="staticField" value="org.academiadecodigo.javabank.view.UserOptions.GET_BALANCE"/>
+    </bean>
+    -->
+
+    <bean class="org.academiadecodigo.bootcamp.Prompt" id="prompt">
+        <constructor-arg name="input">
+            <bean class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+                <property name="staticField" value="java.lang.System.in"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg name="output">
+            <bean class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+                <property name="staticField" value="java.lang.System.out"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <!-- Views -->
+    <bean class="org.academiadecodigo.javabank.view.NewAccountView" id="newAccountView">
+        <property name="newAccountController" ref="newAccountController"/>
+    </bean>
+
+    <bean class="org.academiadecodigo.javabank.view.LoginView" id="loginView">
+        <property name="prompt" ref="prompt"/>
+        <property name="loginController" ref="loginController"/>
+    </bean>
+
+    <bean class="org.academiadecodigo.javabank.view.MainView" id="mainView">
+        <property name="prompt" ref="prompt"/>
+        <property name="mainController" ref="mainController"/>
+    </bean>
+
+    <bean class="org.academiadecodigo.javabank.view.BalanceView" id="balanceView">
+        <property name="balanceController" ref="balanceController"/>
+    </bean>
+
+    <bean class="org.academiadecodigo.javabank.view.AccountTransactionView" id="depositView">
+        <property name="prompt" ref="prompt"/>
+        <property name="transactionController" ref="depositController"/>
+    </bean>
+
+    <bean class="org.academiadecodigo.javabank.view.AccountTransactionView" id="withdrawalView">
+        <property name="prompt" ref="prompt"/>
+        <property name="transactionController" ref="withdrawalController"/>
+    </bean>
+
+</beans>

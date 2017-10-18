@@ -1,4 +1,4 @@
-package org.academiadecodigo.javabank.persistence.jpa;
+package org.academiadecodigo.javabank.persistence.managers.jpa;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,7 +15,8 @@ public class JpaIntegrationTestHelper {
     @Before
     public void init() {
         emf = Persistence.createEntityManagerFactory("test");
-        sm = new JpaSessionManager(emf);
+        sm = new JpaSessionManager();
+        sm.setEmf(emf);
         tx = new JpaTransactionManager(sm);
 
         tx.beginRead();
