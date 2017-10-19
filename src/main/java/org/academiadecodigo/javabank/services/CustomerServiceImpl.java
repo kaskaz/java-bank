@@ -18,7 +18,6 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerDao = customerDao;
     }
 
-    @Transactional
     @Override
     public Customer findById(Integer id) {
 
@@ -26,7 +25,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     }
 
-    @Transactional
     @Override
     public double getBalance(Integer id) {
 
@@ -47,7 +45,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     }
 
-    @Transactional
     @Override
     public Set<Integer> getCustomerAccountIds(Integer id) {
 

@@ -24,7 +24,6 @@ public abstract class GenericJpaDao<T extends Model> implements Dao<T> {
         this.modelType = modelType;
     }
 
-    @Transactional
     @Override
     public List<T> findAll() {
 
@@ -34,7 +33,6 @@ public abstract class GenericJpaDao<T extends Model> implements Dao<T> {
 
     }
 
-    @Transactional
     @Override
     public T findById(Integer id) {
 
@@ -42,7 +40,6 @@ public abstract class GenericJpaDao<T extends Model> implements Dao<T> {
 
     }
 
-    @Transactional
     @Override
     public T saveOrUpdate(T modelObject) {
 
@@ -50,7 +47,6 @@ public abstract class GenericJpaDao<T extends Model> implements Dao<T> {
 
     }
 
-    @Transactional
     @Override
     public void delete(Integer id) {
 

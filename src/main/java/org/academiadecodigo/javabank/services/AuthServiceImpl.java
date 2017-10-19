@@ -1,7 +1,6 @@
 package org.academiadecodigo.javabank.services;
 
 import org.academiadecodigo.javabank.model.Customer;
-import org.springframework.transaction.annotation.Transactional;
 
 public class AuthServiceImpl implements AuthService {
 

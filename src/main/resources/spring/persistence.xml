@@ -15,11 +15,8 @@
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <bean id="accountDao" class="org.academiadecodigo.javabank.persistence.dao.jpa.JpaAccountDao">
-        <!--<property name="sm" ref="sessionManager"/>-->
-    </bean>
-    <bean id="customerDao" class="org.academiadecodigo.javabank.persistence.dao.jpa.JpaCustomerDao">
-        <!--<property name="sm" ref="sessionManager"/>-->
-    </bean>
+    <bean id="accountDao" class="org.academiadecodigo.javabank.persistence.dao.jpa.JpaAccountDao"/>
+    <bean id="customerDao" class="org.academiadecodigo.javabank.persistence.dao.jpa.JpaCustomerDao"/>
+
 
 </beans>
