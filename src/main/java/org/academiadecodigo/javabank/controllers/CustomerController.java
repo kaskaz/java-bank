@@ -1,6 +1,7 @@
 package org.academiadecodigo.javabank.controllers;
 
 import org.academiadecodigo.javabank.model.Customer;
+import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,6 @@ public class CustomerController {
     public String customerView(Model model, @PathVariable int id){
 
         Customer customer = customerService.findById(id);
-
         model.addAttribute("customer", customer);
 
         return "customer";

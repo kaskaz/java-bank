@@ -9,9 +9,16 @@
         <h1>Customer Info</h1>
         <table>
             <tr>
-                <td>
-
-                </td>
+                <td>Name</td>
+                <td th:text="${customer.firstName} + ' ' + ${customer.lastName}"></td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td th:text="${customer.email}"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td th:text="${customer.phone}"></td>
             </tr>
         </table>
     </div>
@@ -19,7 +26,16 @@
         <h1>Customer Accounts</h1>
         <table>
             <tr>
-
+                <td>ID</td>
+                <td>Type</td>
+                <td>Balance</td>
+                <td></td>
+            </tr>
+            <tr th:each="account : ${customer.getAccounts()}">
+                <td th:text="${account.id} + ' ' + ${customer.lastName}"></td>
+                <td th:text="${account.getAccountType()}"></td>
+                <td th:text="${account.balance}"></td>
+                <td><a th:href=""></a></td>
             </tr>
         </table>
     </div>
