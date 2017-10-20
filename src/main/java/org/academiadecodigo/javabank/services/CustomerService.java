@@ -2,6 +2,7 @@ package org.academiadecodigo.javabank.services;
 
 import org.academiadecodigo.javabank.model.Customer;
 
+import java.util.List;
 import java.util.Set;
 
 public interface CustomerService {
@@ -12,4 +13,5 @@ public interface CustomerService {
 
     Set<Integer> getCustomerAccountIds(Integer id);
 
+    List<Customer> getCustomers();
 }

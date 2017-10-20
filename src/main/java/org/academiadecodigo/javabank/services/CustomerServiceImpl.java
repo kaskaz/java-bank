@@ -3,13 +3,18 @@ package org.academiadecodigo.javabank.services;
 import org.academiadecodigo.javabank.model.Customer;
 import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.persistence.dao.CustomerDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
+    @Autowired
     private CustomerDao customerDao;
 
     public void setCustomerDao(CustomerDao customerDao) {
@@ -58,5 +63,16 @@ public class CustomerServiceImpl implements CustomerService {
 
         return accountIds;
 
+    }
+
+    public List<Customer> getCustomers(){
+
+        List<Customer> customers = customerDao.findAll();
+
+        if (customers == null) {
+            throw new IllegalArgumentException("No Customers");
+        }
+
+        return customers;
     }
 }
