@@ -4,6 +4,8 @@ import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.model.account.AccountType;
 import org.academiadecodigo.javabank.services.AccountService;
 
+import java.util.List;
+
 public class MockAccountService extends AbstractMockService<Account> implements AccountService {
 
     @Override
@@ -43,5 +45,10 @@ public class MockAccountService extends AbstractMockService<Account> implements 
             srcAccount.debit(amount);
             dstAccount.credit(amount);
         }
+    }
+
+    @Override
+    public List<Account> getAccounts() {
+        return null;
     }
 }

@@ -1,6 +1,9 @@
 package org.academiadecodigo.javabank.services;
 
+import org.academiadecodigo.javabank.model.Customer;
 import org.academiadecodigo.javabank.model.account.Account;
+
+import java.util.List;
 
 public interface AccountService {
 
@@ -11,5 +14,7 @@ public interface AccountService {
     void withdraw(Integer id, double amount);
 
     void transfer(Integer srcId, Integer dstId, double amount);
+
+    List<Account> getAccounts();
 
 }

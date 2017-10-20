@@ -1,11 +1,14 @@
 package org.academiadecodigo.javabank.services;
 
+import org.academiadecodigo.javabank.model.Customer;
 import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.persistence.dao.AccountDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -74,6 +77,17 @@ public class AccountServiceImpl implements AccountService {
         accountDao.saveOrUpdate(srcAccount);
         accountDao.saveOrUpdate(dstAccount);
 
+    }
+
+    public List<Account> getAccounts(){
+
+        List<Account> accounts = accountDao.findAll();
+
+        if (accounts == null) {
+            throw new IllegalArgumentException("No accounts.");
+        }
+
+        return accounts;
     }
 }
 
