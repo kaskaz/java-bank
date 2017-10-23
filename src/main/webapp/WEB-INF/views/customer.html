@@ -23,6 +23,9 @@
         </table>
     </div>
     <div>
+        <a th:href="'customeredit/'+${customer.id}">edit</a>
+    </div>
+    <div>
         <h1>Customer Accounts</h1>
         <table>
             <tr>
@@ -32,12 +35,20 @@
                 <td></td>
             </tr>
             <tr th:each="account : ${customer.getAccounts()}">
-                <td th:text="${account.id} + ' ' + ${customer.lastName}"></td>
+                <td th:text="${account.id}"></td>
                 <td th:text="${account.getAccountType()}"></td>
                 <td th:text="${account.balance}"></td>
-                <td><a th:href=""></a></td>
+                <td><a th:href="'/javabank/accountdeletefromcustomer/'+${account.id}">delete</a></td>
             </tr>
         </table>
+    </div>
+    <div>
+        <form th:action="'/openaccount/'+${customer.id}">
+            <input type="submit" value="Open account">
+        </form>
+    </div>
+    <div>
+        <a th:href="'/javabank/customers'">back to list</a>
     </div>
 </body>
 </html>

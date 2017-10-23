@@ -6,6 +6,7 @@ import org.academiadecodigo.javabank.persistence.dao.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
@@ -19,6 +20,18 @@ public class CustomerServiceImpl implements CustomerService {
 
     public void setCustomerDao(CustomerDao customerDao) {
         this.customerDao = customerDao;
+    }
+
+    @Transactional
+    @Override
+    public Integer add(Customer customer) {
+        return customerDao.saveOrUpdate(customer).getId();
+    }
+
+    @Transactional
+    @Override
+    public void remove(Integer id) {
+        customerDao.delete(id);
     }
 
     @Override

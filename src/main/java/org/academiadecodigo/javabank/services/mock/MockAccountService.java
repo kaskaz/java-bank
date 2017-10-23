@@ -21,6 +21,11 @@ public class MockAccountService extends AbstractMockService<Account> implements 
 
     }
 
+    @Override
+    public void remove(Integer id) {
+
+    }
+
     public void deposit(Integer id, double amount) {
         modelMap.get(id).credit(amount);
     }
@@ -49,6 +54,11 @@ public class MockAccountService extends AbstractMockService<Account> implements 
 
     @Override
     public List<Account> getAccounts() {
+        return null;
+    }
+
+    @Override
+    public Account getAccount(Integer id) {
         return null;
     }
 }

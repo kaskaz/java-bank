@@ -5,20 +5,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
-<h1>Welcome to your bank management system!</h1>
-<p/>
-<p/>
 <div>
-    <table>
-        <tr>
-            <td>View all customers</td>
-            <td><a href="/javabank/customers">HERE</a></td>
-        </tr>
-        <tr>
-            <td>View all accounts</td>
-            <td><a href="/javabank/accounts">HERE</a></td>
-        </tr>
-    </table>
+    <h1>Welcome to your bank management system</h1>
+</div>
+<div>
+    <h2>
+        <a th:href="'/javabank/customers'">See the list of customers</a>
+    </h2>
+    <h2>
+        <a th:href="'/javabank/accounts'">See the list of accounts</a>
+    </h2>
 </div>
 </body>
 </html>

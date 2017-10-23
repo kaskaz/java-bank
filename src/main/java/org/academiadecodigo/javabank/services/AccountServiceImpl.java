@@ -16,6 +16,9 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountDao accountDao;
 
+    @Autowired
+    private CustomerService customerService;
+
     public void setAccountDao(AccountDao accountDao) {
         this.accountDao = accountDao;
     }
@@ -24,6 +27,23 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Integer add(Account account) {
         return accountDao.saveOrUpdate(account).getId();
+    }
+
+    @Transactional
+    @Override
+    public void remove(Integer id) {
+
+        /**
+         * Edited: remove account from customer before delete account
+         */
+        Account account = accountDao.findById(id);
+        Customer customer = account.getCustomer();
+
+        customer.removeAccount(account);
+        customerService.add(customer);
+        /**********/
+
+        accountDao.delete(id);
     }
 
     @Transactional
@@ -79,6 +99,7 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
+    @Override
     public List<Account> getAccounts(){
 
         List<Account> accounts = accountDao.findAll();
@@ -88,6 +109,18 @@ public class AccountServiceImpl implements AccountService {
         }
 
         return accounts;
+    }
+
+    @Override
+    public Account getAccount(Integer id) {
+
+        Account account = accountDao.findById(id);
+
+        if (account == null) {
+            throw new IllegalArgumentException("No account with ID " + id);
+        }
+
+        return account;
     }
 }
 

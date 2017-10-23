@@ -5,20 +5,29 @@
     <title>Accounts list</title>
 </head>
 <body>
-<div>
-    <h2>Accounts List</h2>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Type</th>
-            <th>Balance</th>
-        </tr>
-        <tr th:each="account : ${accounts}">
-            <td th:text="${account.id}"></td>
-            <td th:text="${account.getAccountType()}"></td>
-            <td th:text="${account.balance}"></td>
-        </tr>
-    </table>
-</div>
+    <div>
+        <h2>Accounts List</h2>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Type</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tr th:each="account : ${accounts}">
+                <td th:text="${account.id}"></td>
+                <td th:text="${account.getAccountType()}"></td>
+                <td th:text="${account.balance}"></td>
+                <td><a th:href="'accountview/'+${account.id}">view</a></td>
+                <td><a th:href="'accountdeletefromaccountslist/'+${account.id}">delete</a></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <a th:href="'/javabank/'">back to main</a>
+    </div>
 </body>
 </html>

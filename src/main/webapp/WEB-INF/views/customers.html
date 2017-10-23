@@ -7,26 +7,33 @@
 <body>
 <div>
     <h2>Customer List</h2>
+</div>
+<div>
     <table>
-        <tr>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th></th>
-            <th></th>
-        </tr>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
         <tr th:each="customer : ${customers}">
-            <td th:text="${customer.id}"></td>
-            <td th:text="${customer.firstName}"></td>
-            <td th:text="${customer.lastName}"></td>
-            <td th:text="${customer.email}"></td>
-            <td th:text="${customer.phone}"></td>
+            <td th:text="${customer.id}">dummy</td>
+            <td th:text="${customer.firstName} + ' ' + ${customer.lastName}">dummy</td>
+            <td th:text="${customer.email}">dummy</td>
+            <td th:text="${customer.phone}">dummy</td>
             <td><a th:href="'customerview/'+${customer.id}">view</a></td>
+            <td><a th:href="'customeredit/'+${customer.id}">edit</a></td>
             <td><a th:href="'customerdelete/'+${customer.id}">delete</a></td>
         </tr>
     </table>
+</div>
+<div>
+    <a th:href="'customeradd'">Add customer</a>
+</div>
+<div>
+    <a th:href="'/javabank/'">back to main</a>
 </div>
 </body>
 </html>

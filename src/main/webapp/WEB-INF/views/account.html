@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account details</title>
+</head>
+<body>
+<div>
+    <h1>Account details</h1>
+</div>
+<div>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td th:text="${account.id}">id</td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td th:text="${account.getAccountType()}">type</td>
+        </tr>
+        <tr>
+            <td>Balance</td>
+            <td th:text="${account.balance}">balance</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <h1>Account holder</h1>
+</div>
+<div>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td th:text="${account.customer.firstName} + ' ' + ${account.customer.lastName}">name</td>
+        </tr>
+        <tr>
+            <td>Balance</td>
+            <td th:text="${account.customer.id}">balance</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td th:text="${account.customer.phone}">number</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <a th:href="'/javabank/customerview/'+${account.customer.id}">more details</a>
+</div>
+<div>
+    <a th:href="'/javabank/accounts'">back to list</a>
+</div>
+</body>
+</html>
