@@ -76,10 +76,10 @@ public class CustomerController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/customersave")
-    public String customerSave(@Valid CustomerDTO customerDTO, BindingResult bindingResult){
+    public String customerSave(@Valid @ModelAttribute("customer") CustomerDTO customerDTO, BindingResult bindingResult){
 
         if (bindingResult.hasErrors()) {
-            return "redirect:customerform";
+            return "customerform";
         }
 
         Customer customer = customerService.findById( customerDTO.getId() );
